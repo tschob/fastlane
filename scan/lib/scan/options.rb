@@ -411,6 +411,11 @@ module Scan
                                      description: "Only post on Slack if the tests fail",
                                      is_string: false,
                                      default_value: false),
+        FastlaneCore::ConfigItem.new(key: :slack_default_payloads,
+                                     env_name: "SCAN_SLACK_DEFAULT_PAYLOADS",
+                                     description: "Specifies default payloads to include in Slack messages. For more info visit https://docs.fastlane.tools/actions/slack",
+                                     optional: true,
+                                     type: Array),
 
         # misc
         FastlaneCore::ConfigItem.new(key: :destination,
@@ -445,7 +450,13 @@ module Scan
                                     env_name: "SCAN_CLONED_SOURCE_PACKAGES_PATH",
                                     description: "Sets a custom path for Swift Package Manager dependencies",
                                     type: String,
-                                    optional: true)
+                                    optional: true),
+        FastlaneCore::ConfigItem.new(key: :use_system_scm,
+                                     env_name: "SCAN_USE_SYSTEM_SCM",
+                                     description: "Lets xcodebuild use system's scm configuration",
+                                     optional: true,
+                                     type: Boolean,
+                                     default_value: false)
 
       ]
     end

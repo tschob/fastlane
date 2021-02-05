@@ -74,6 +74,7 @@ module Precheck
     def api_token
       @api_token ||= Spaceship::ConnectAPI::Token.create(Precheck.config[:api_key]) if Precheck.config[:api_key]
       @api_token ||= Spaceship::ConnectAPI::Token.from_json_file(Precheck.config[:api_key_path]) if Precheck.config[:api_key_path]
+      @api_token ||= Spaceship::ConnectAPI.token
       return @api_token
     end
 

@@ -41,6 +41,7 @@ module Deliver
     def api_token
       @api_token ||= Spaceship::ConnectAPI::Token.create(options[:api_key]) if options[:api_key]
       @api_token ||= Spaceship::ConnectAPI::Token.from_json_file(options[:api_key_path]) if options[:api_key_path]
+      @api_token ||= Spaceship::ConnectAPI.token
       return @api_token
     end
 

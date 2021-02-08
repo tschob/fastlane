@@ -295,7 +295,12 @@ module Gym
                                      description: "Lets xcodebuild use system's scm configuration",
                                      optional: true,
                                      type: Boolean,
-                                     default_value: false)
+                                     default_value: false),
+        FastlaneCore::ConfigItem.new(key: :export_command_prefix,
+                                    env_name: "GYM_XCODE_EXPORT_COMMAND_PREFIX",
+                                    description: "Allows to prefix the export command call. Can be e.g. useful to change the architecture",
+                                    type: String,
+                                    optional: true)
       ]
     end
   end

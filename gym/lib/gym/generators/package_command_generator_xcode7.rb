@@ -19,7 +19,9 @@ module Gym
       DEFAULT_EXPORT_METHOD = "app-store"
 
       def generate
-        parts = ["/usr/bin/xcrun #{wrap_xcodebuild.shellescape} -exportArchive"]
+        parts = []
+        parts << Gym.config[:export_command_prefix] if Gym.config[:export_command_prefix] && !Gym.config[:export_command_prefix].empty?
+        parts << "/usr/bin/xcrun #{wrap_xcodebuild.shellescape} -exportArchive"
         parts += options
         parts += pipe
 
